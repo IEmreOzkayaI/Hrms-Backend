@@ -1,8 +1,11 @@
 ![Image of HRMS](https://www.creativewebmall.com/blog/wp-content/uploads/2019/02/Human-Resource-Management-System-1024x576.png)
 
 <h1>❗HRMS</h1>
+<a href="#katman">- Katmanlar</a></br> 
+<a href="#ister">- İsterler</a>
 <hr />
-<ol type="I">
+
+<ol type="I" id="ister">
 <li><strong>Req 1 : İş Arayanlar sisteme kayıt olabilmelidir.</strong><strong>Kabul Kriterleri:</strong>
 <ul type="square">
 <li>Kayıt sırasında kullanıcıdan ad, soyad, tcno, doğum yılı, e-Posta, şifre, şifre tekrarı bilgileri istenir.</li>
