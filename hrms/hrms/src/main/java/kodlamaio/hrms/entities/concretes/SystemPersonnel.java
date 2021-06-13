@@ -15,12 +15,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="system_personnels")
-@PrimaryKeyJoinColumn(name="user_id", referencedColumnName="id")
-public class SystemPersonnel extends User{
-	@Column(name="first_name")
+@Table(name = "system_personnels")
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
+public class SystemPersonnel extends User {
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
 }
