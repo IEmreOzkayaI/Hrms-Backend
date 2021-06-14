@@ -5,7 +5,6 @@ import java.util.List;
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.cvConcretes.School;
-import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvExperience;
 import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvSchool;
 import kodlamaio.hrms.entities.dtos.SchoolDto;
 

@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Cv;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Image;
 
 public interface ImageService {

@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import kodlamaio.hrms.entities.concretes.cvConcretes.Language;
 import kodlamaio.hrms.entities.dtos.LanguageDto;
-import kodlamaio.hrms.entities.dtos.SchoolDto;
-
+@Repository
 public interface LanguageDao  extends JpaRepository<Language, Integer>{
 	@Query("Select new kodlamaio.hrms.entities.dtos.LanguageDto"
 			+ "(l.language,l.level)"

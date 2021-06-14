@@ -16,12 +16,12 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CvDao;
 import kodlamaio.hrms.entities.concretes.Cv;
-import kodlamaio.hrms.entities.concretes.JobSeeker;
+
 import kodlamaio.hrms.entities.dtos.CvDto;
-import net.bytebuddy.asm.Advice.This;
+
 @Service
-public class CvManager  implements CvService{
-	
+public class CvManager implements CvService {
+
 	private CvDao cvDao;
 	private JobExperienceService jobExperienceService;
 	private SchoolService schoolService;
@@ -46,7 +46,7 @@ public class CvManager  implements CvService{
 		cvDto.setJobExperiences(this.jobExperienceService.findByCv_Id(cvDto.getJobSeeker()).getData());
 		cvDto.setLanguages(this.languageService.findByCv_Id(cvDto.getJobSeeker()).getData());
 		cvDto.setProgrammingLanguages(this.programmingLanguageService.findByCv_Id(cvDto.getJobSeeker()).getData());
-		return new SuccessDataResult<CvDto>(cvDto,"Data başarıyla listelendi");
+		return new SuccessDataResult<CvDto>(cvDto, "Data başarıyla listelendi");
 	}
 
 	@Override
@@ -60,7 +60,5 @@ public class CvManager  implements CvService{
 		return new SuccessDataResult<List<Cv>>(this.cvDao.findAll());
 
 	}
-
-
 
 }

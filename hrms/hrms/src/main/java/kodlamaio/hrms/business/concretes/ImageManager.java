@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import kodlamaio.hrms.business.abstracts.CvService;
 import kodlamaio.hrms.business.abstracts.ImageService;
 import kodlamaio.hrms.business.abstracts.ImageUploadService;
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
-import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.dataResults.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -45,10 +43,9 @@ public class ImageManager implements ImageService {
 				image.setImageUrl(uploadImage.get("url"));
 				this.imageDao.save(image);
 				return new SuccessResult("Fotoğraf eklendi!");
-			} 
+			}
 		}
 		return new ErrorResult("Böyle bir cv mevcut değil fotoğraf eklenemedi!");
-		
 
 	}
 

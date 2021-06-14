@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import kodlamaio.hrms.entities.concretes.Cv;
 import kodlamaio.hrms.entities.concretes.cvConcretes.ProgrammingLanguage;
 import lombok.AllArgsConstructor;
@@ -27,10 +29,12 @@ public class CvProgrammingLanguage {
 	@Column(name = "id")
 	private int id;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cv_id")
 	private Cv cv;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "programming_language_id")
 	private ProgrammingLanguage programmingLanguage;

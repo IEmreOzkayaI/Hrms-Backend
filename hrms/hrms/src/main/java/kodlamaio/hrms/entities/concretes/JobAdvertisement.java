@@ -11,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,18 +31,24 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "id")
 	private JobPosition jobPositionId;
 
 	@Column(name="job_description")
+	@NotBlank
+	@NotNull
 	private String jobDescription;
 
 	@Column(name = "city")
+	@NotBlank
+	@NotNull
 	private String city;
 
 	@Column(name = "min_salary")
@@ -48,6 +58,8 @@ public class JobAdvertisement {
 	private int maxSalary;
 
 	@Column(name = "open_positions")
+	@NotBlank
+	@NotNull
 	private int openPositions;
 
 	@Column(name = "last_Date")

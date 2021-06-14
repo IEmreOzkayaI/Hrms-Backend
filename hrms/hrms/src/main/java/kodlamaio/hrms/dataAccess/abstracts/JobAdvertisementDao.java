@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
-
+@Repository
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer>{	
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementDto"
 			+ "(j.id,e.companyName,jp.positionName,j.openPositions,j.releaseDate,j.lastDate)"

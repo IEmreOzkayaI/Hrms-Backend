@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import kodlamaio.hrms.entities.concretes.cvConcretes.JobExperience;
 import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvExperience;
 import kodlamaio.hrms.entities.dtos.ExperienceDto;
-import kodlamaio.hrms.entities.dtos.ProgrammingLanguageDto;
-
+@Repository
 public interface JobExperienceDao extends JpaRepository<JobExperience, Integer> {
 	@Query("from JobExperience order by endDate asc nulls first ")
 	List<JobExperience> findByOrderByAsc();
