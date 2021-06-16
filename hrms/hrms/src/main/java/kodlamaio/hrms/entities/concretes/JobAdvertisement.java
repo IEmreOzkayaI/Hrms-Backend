@@ -46,10 +46,10 @@ public class JobAdvertisement {
 	@NotNull
 	private String jobDescription;
 
-	@Column(name = "city")
-	@NotBlank
-	@NotNull
-	private String city;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="city_id")
+	private City city;
 
 	@Column(name = "min_salary")
 	private int minSalary;

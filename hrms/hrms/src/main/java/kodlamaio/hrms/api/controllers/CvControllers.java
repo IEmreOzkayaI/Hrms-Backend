@@ -39,7 +39,7 @@ public class CvControllers {
 		return ResponseEntity.ok(this.cvService.add(cv));
 	}
 
-	@GetMapping("/getAllCv")
+	@GetMapping("/getById")
 	public ResponseEntity<?> getById(@RequestParam int id) {
 		return ResponseEntity.ok(this.cvService.getById(id));
 	}

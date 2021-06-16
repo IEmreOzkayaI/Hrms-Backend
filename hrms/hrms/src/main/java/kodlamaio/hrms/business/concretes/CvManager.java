@@ -55,10 +55,6 @@ public class CvManager implements CvService {
 		return new SuccessResult("Ekleme Başarılı");
 	}
 
-	@Override
-	public DataResult<List<Cv>> getAll() {
-		return new SuccessDataResult<List<Cv>>(this.cvDao.findAll());
 
-	}
 
 }
