@@ -1,0 +1,33 @@
+1622632486825	Rename type 'employerWithJobAdvertisementDto'
+1622634439633	Rename type 'EmployerWithJobAdvertisementDto'
+1622659001319	Rename type 'JobAdvertisementWithEmployerWithJobPositionDto'
+1622660795125	Rename method 'getJobAdvertisementIsActiveTrueOrderByReleaseDate'
+1622660807540	Rename method 'getJobAdvertisementIsActiveTrue'
+1622804749065	Delete element
+1622804755228	Delete elements
+1622839665210	Rename type 'JobExperienceDto'
+1622913007599	Rename type 'ImageDAO'
+1622918987928	Delete element
+1622919011421	Delete element
+1622919672679	Rename type 'ResumeAndSchools'
+1622922217269	Move compilation unit
+1622922240334	Rename type 'Resume'
+1622922256726	Rename type 'ResumeAndSchool'
+1622922264508	Rename type 'CV'
+1622969637326	Move compilation unit
+1622969641779	Move compilation unit
+1622969645950	Move compilation unit
+1622969649206	Move compilation unit
+1622969652954	Move compilation unit
+1622969665867	Copy package
+1622969688326	Delete element
+1622969714475	Move compilation unit
+1622969719757	Move compilation unit
+1622969722629	Move compilation unit
+1622969726117	Move compilation unit
+1622969730192	Delete element
+1622970594222	Delete element
+1622970604169	Delete element
+1622975099701	Rename type 'ResumeDao'
+1622976244083	Rename type 'AllCvInformation'
+1622976714631	Delete element

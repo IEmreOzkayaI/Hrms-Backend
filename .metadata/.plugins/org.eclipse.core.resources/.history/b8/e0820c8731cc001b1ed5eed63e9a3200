@@ -1,0 +1,30 @@
+package kodlamaio.hrms.entities.dtos;
+
+import java.util.List;
+
+import kodlamaio.hrms.entities.concretes.JobSeeker;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Image;
+import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvExperience;
+import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvLanguage;
+import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvProgrammingLanguage;
+import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvSchool;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class CvDto {
+	private int id;
+	private JobSeeker jobSeeker;
+	private String image;
+	private String github;
+	private String linkedin;
+	private String biography;
+
+	private List<CvSchool> schools;
+	private List<CvExperience> jobExperiences;
+	private List<CvLanguage> languages;
+	private List<CvProgrammingLanguage> programmingLanguages;
+}

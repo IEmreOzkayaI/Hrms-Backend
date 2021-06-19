@@ -1,0 +1,10 @@
+package kodlamaio.hrms.entities.dtos;
+
+import java.util.Date;
+
+public class SchoolDto {
+	private String name;
+	private String department;
+	private Date startDate;
+	private Date endDate;
+}

@@ -1,0 +1,6 @@
+package kodlamaio.hrms.entities.dtos;
+
+public class ProgrammingLanguageDto {
+	private String name;
+
+}

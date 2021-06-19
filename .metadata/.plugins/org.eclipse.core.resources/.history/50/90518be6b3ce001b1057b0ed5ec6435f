@@ -1,0 +1,22 @@
+package kodlamaio.hrms.business.concretes;
+
+import org.springframework.stereotype.Service;
+
+import com.sun.net.httpserver.Authenticator.Result;
+
+import kodlamaio.hrms.business.abstracts.CityService;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
+import kodlamaio.hrms.dataAccess.abstracts.CityDao;
+import kodlamaio.hrms.entities.concretes.City;
+@Service
+public class CityManager implements CityService {
+	
+	private CityDao cityDao;
+
+	@Override
+	public Result add(City city) {
+		this.
+		return new SuccessResult("Şehir Ekleme Başarılı");
+	}
+
+}

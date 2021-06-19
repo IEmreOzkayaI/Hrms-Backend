@@ -1,0 +1,36 @@
+package kodlamaio.hrms.business.concretes;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kodlamaio.hrms.business.abstracts.ProgrammingLanguageService;
+import kodlamaio.hrms.core.utilities.dataResults.DataResult;
+import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.core.utilities.results.SuccessResult;
+import kodlamaio.hrms.dataAccess.abstracts.ProgrammingLanguageDao;
+import kodlamaio.hrms.entities.concretes.cvConcretes.ProgrammingLanguage;
+
+@Service
+public class ProgrammingLanguageManager implements ProgrammingLanguageService{
+
+    private ProgrammingLanguageDao programmingLanguageDao;
+
+    @Autowired
+    public ProgrammingLanguageManager(ProgrammingLanguageDao programmingLanguageDao) {
+        this.programmingLanguageDao = programmingLanguageDao;
+    }
+
+    @Override
+    public Result add(ProgrammingLanguage programmingLanguage) {
+        this.programmingLanguageDao.save(programmingLanguage);
+        return new SuccessResult("Programlama dili başarıyla eklendi!");
+    }
+
+	@Override
+	public DataResult<List<ProgrammingLanguage>> findByJobSeekerId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
