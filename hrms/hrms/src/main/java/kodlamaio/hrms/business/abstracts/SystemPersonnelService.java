@@ -8,5 +8,9 @@ import kodlamaio.hrms.entities.concretes.SystemPersonnel;
 
 public interface SystemPersonnelService {
 	Result add(SystemPersonnel systemPersonnel);
+	Result update(SystemPersonnel systemPersonnel);
+	Result delete(int id);
+	
 	DataResult<List<SystemPersonnel>> getAll();
+	DataResult<SystemPersonnel> getById(int id);
 }

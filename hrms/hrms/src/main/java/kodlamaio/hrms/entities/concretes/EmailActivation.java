@@ -1,4 +1,6 @@
-package kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes;
+package kodlamaio.hrms.entities.concretes;
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,12 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import kodlamaio.hrms.entities.concretes.Cv;
-import kodlamaio.hrms.entities.concretes.cvConcretes.Language;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,20 +22,21 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cv_languages")
-public class CvLanguage {
+@Table(name = "activation_emails")
+public class EmailActivation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name="id")
 	private int id;
 	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "cv_id")
-	private Cv cv;
+	@Column(name = "activation_code")
+	private String activationCode;
 	
-	@JsonIgnore
+	@Column(name = "is_activated")
+	private boolean isActivated;
+	
 	@ManyToOne
-	@JoinColumn(name="language_id")
-	private Language language;
+	@JsonIgnore
+	@JoinColumn(name="user_id")
+	private User user;
 }

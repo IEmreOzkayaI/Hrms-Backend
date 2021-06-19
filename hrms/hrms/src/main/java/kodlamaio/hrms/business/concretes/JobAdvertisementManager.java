@@ -38,6 +38,21 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		this.jobAdvertisementDao.save(jobAdvertisement);
 		return new SuccessResult("İş ilanı eklendi");
 	}
+	
+	@Override
+	public Result update(JobAdvertisement jobAdvertisement) {
+		this.jobAdvertisementDao.save(jobAdvertisement);
+		return new SuccessResult("İş ilanı başarıyla güncellendi");
+	}
+
+	@Override
+	public Result delete(int jobAdvertisementId) {
+		JobAdvertisement deleteJobAdvertisement=this.jobAdvertisementDao.getById(jobAdvertisementId);
+		this.jobAdvertisementDao.delete(deleteJobAdvertisement);
+		return new SuccessResult("İş ilanı başarıyla silindi");
+
+	}
+	
 
 	@Override
 	public DataResult<List<JobAdvertisementDto>> findJobAdvertisementIsActiveTrueOrderByReleaseDate() {

@@ -4,18 +4,16 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.cvConcretes.JobExperience;
-import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvExperience;
-import kodlamaio.hrms.entities.dtos.ExperienceDto;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Experience;
 
-public interface JobExperienceService {
-	Result add(JobExperience jobExperience);
+public interface ExperienceService {
+	Result add(int cvId,Experience experience);
+	Result update(int cvId,Experience experience);
+	Result delete(int jobExperienceId);
 
-	DataResult<List<JobExperience>> findByOrderByAsc();
-
-	DataResult<List<CvExperience>> findByCvIdOrderByAsc(int id);
-
-	DataResult<List<ExperienceDto>> findByCv_Id(int id);
+	DataResult<List<Experience>> findByOrderByAsc();
+	DataResult<List<Experience>> findByCvIdOrderByAsc(int id);
+	DataResult<List<Experience>> findByCv_Id(int id);
 
 
 }

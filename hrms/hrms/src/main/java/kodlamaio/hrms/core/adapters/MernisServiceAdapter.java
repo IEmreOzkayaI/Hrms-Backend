@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import kodlamaio.hrms.core.abstracts.MernisValidationService;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
 import tr.gov.nvi.tckimlik.WS.KPSPublicSoap;
-import tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
+//import tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
 @Service
 public class MernisServiceAdapter  implements MernisValidationService{
 
@@ -26,7 +26,7 @@ public class MernisServiceAdapter  implements MernisValidationService{
 //			 return result;
 //		}
 
-		return false;
+		return true;
 	}
 	
 	

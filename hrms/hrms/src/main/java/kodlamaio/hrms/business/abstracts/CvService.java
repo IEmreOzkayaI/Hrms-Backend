@@ -8,6 +8,11 @@ import kodlamaio.hrms.entities.concretes.Cv;
 import kodlamaio.hrms.entities.dtos.CvDto;
 
 public interface CvService {
-	Result add(Cv cv);
-    DataResult<CvDto> getById(int id);
+	Result add(String github,String linkedin,String biography,int userId);
+	Result delete(int cvId);
+	Result update(String github,String linkedin,String biography,int userId);
+
+	DataResult<CvDto> getById( int cvId);
+	DataResult<List<Cv>> getAll(); 
 }
+

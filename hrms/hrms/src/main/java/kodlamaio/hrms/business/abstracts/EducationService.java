@@ -4,18 +4,16 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.cvConcretes.School;
-import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvSchool;
-import kodlamaio.hrms.entities.dtos.SchoolDto;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Education;
 
-public interface SchoolService {
-	Result add(School school);
-
-	DataResult<List<School>> findAllOrderByAsc();
-
-	DataResult<List<CvSchool>> findByCvIdOrderByAsc(int id);
+public interface EducationService {
+	Result add(int cvId,Education school);
+	Result update(int cvId,Education school);
+	Result delete(int id);
 	
-	DataResult<List<SchoolDto>> findByCv_id(int id);
+	DataResult<List<Education>> findAllOrderByAsc();
+	DataResult<List<Education>> findByCv_id(int id);
+
 
 
 }

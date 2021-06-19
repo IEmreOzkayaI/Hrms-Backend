@@ -11,6 +11,9 @@ import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 @Repository
 public interface JobAdvertisementDao extends JpaRepository<JobAdvertisement, Integer>{	
+	JobAdvertisement getById(int id);
+
+	
 	@Query("Select new kodlamaio.hrms.entities.dtos.JobAdvertisementDto"
 			+ "(j.id,e.companyName,jp.positionName,j.openPositions,j.releaseDate,j.lastDate)"
 			+ "From JobAdvertisement j "

@@ -1,5 +1,6 @@
 package kodlamaio.hrms.core.adapters;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -28,19 +29,17 @@ private Cloudinary cloudinary;
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public DataResult<Map> uploadImageFile(MultipartFile imageFile) {
+	public String uploadImageFile(File imageFile) {
 		try {
-			@SuppressWarnings("unchecked")
-			Map<String, String> resultMap =(Map<String, String>) cloudinary.uploader().upload(imageFile.getBytes(), ObjectUtils.emptyMap());
-			return new SuccessDataResult<Map>(resultMap);
+			Map resultMap = cloudinary.uploader().upload(imageFile, ObjectUtils.emptyMap());
+			return (resultMap.get("url").toString());
 		} catch (IOException e) {
 			
-			e.printStackTrace();
+			throw new RuntimeException(e);
 			
 		}
-		return new ErrorDataResult<Map>();
 	}
 	
-
+	
 
 }

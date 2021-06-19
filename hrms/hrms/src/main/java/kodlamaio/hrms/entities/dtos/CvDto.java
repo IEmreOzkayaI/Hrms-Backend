@@ -3,7 +3,10 @@ package kodlamaio.hrms.entities.dtos;
 import java.util.Date;
 import java.util.List;
 
-import kodlamaio.hrms.entities.concretes.JobSeeker;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Education;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Experience;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Language;
+import kodlamaio.hrms.entities.concretes.cvConcretes.ProgrammingLanguage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,9 +24,9 @@ public class CvDto {
 	private String biography;
 	private int jobSeeker;
 	
-	private List<SchoolDto> schools;
-	private List<ExperienceDto> jobExperiences;
-	private List<LanguageDto> languages;
+	private List<Education> educations;
+	private List<Experience> experiences;
+	private List<Language> languages;
 	private List<ProgrammingLanguageDto> programmingLanguages;
 
 	public CvDto(String firstName, String lastName, Date dateOfBirth, String image, String github, String linkedin,

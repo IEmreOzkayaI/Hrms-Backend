@@ -54,5 +54,24 @@ public class JobSeekerManager implements JobSeekerService {
 			return new SuccessResult("Kayıt Başarılı");
 		}			
 	}
+	
+	@Override
+	public Result update(JobSeeker jobSeeker) {
+		this.jobSeekerDao.save(jobSeeker);
+		return new SuccessResult("Kayıt başarıyla güncellendi");
+	}
+
+	@Override
+	public Result delete(int jobSeekerId) {
+		JobSeeker deleteJobSeeker=this.jobSeekerDao.findById(jobSeekerId);
+		this.jobSeekerDao.delete(deleteJobSeeker);
+		return new SuccessResult("Kayıt başarıyla silindi");
+
+	}
+
+	@Override
+	public DataResult<JobSeeker> findByCv_id(int cvId) {
+		return new SuccessDataResult<JobSeeker>(this.jobSeekerDao.findByCv_id(cvId));
+	}
 
 }

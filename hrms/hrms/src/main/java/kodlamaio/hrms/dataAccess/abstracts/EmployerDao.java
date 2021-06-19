@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import kodlamaio.hrms.entities.concretes.Employer;
 @Repository
 public interface EmployerDao extends JpaRepository<Employer , Integer> {
-
+	Employer findById(int id);
 }

@@ -10,13 +10,13 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 public interface JobAdvertisementService {
 
 	Result add(JobAdvertisement jobAdvertisement);
-	
+	Result update(JobAdvertisement jobAdvertisement);
+	Result delete(int jobAdvertisementId);
+
 	Result closeJobAdvertisement(int id);
-
+	
 	DataResult<List<JobAdvertisementDto>> findJobAdvertisementIsActiveTrue();
-
 	DataResult<List<JobAdvertisementDto>> findJobAdvertisementIsActiveTrueOrderByReleaseDate();
-
 	DataResult<List<JobAdvertisementDto>> findJobAdvertisementIsActiveTrueAndEmployer_UserId(int id);
 	
 

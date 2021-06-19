@@ -1,11 +1,15 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -31,4 +35,8 @@ public class SystemPersonnel extends User {
 	@NotBlank
 	@NotNull
 	private String lastName;
+	
+	@OneToMany(mappedBy = "systemPersonnel")
+	@JsonIgnore
+	private List<SystemPersonnelActivation> activations;
 }

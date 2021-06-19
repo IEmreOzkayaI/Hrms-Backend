@@ -5,49 +5,61 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.SchoolService;
+import kodlamaio.hrms.business.abstracts.EducationService;
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.dataResults.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.dataAccess.abstracts.SchoolDao;
-import kodlamaio.hrms.entities.concretes.cvConcretes.School;
-import kodlamaio.hrms.entities.concretes.cvConcretes.CompoundConcretes.CvSchool;
-import kodlamaio.hrms.entities.dtos.SchoolDto;
+import kodlamaio.hrms.dataAccess.abstracts.CvDao;
+import kodlamaio.hrms.dataAccess.abstracts.EducationDao;
+import kodlamaio.hrms.entities.concretes.Cv;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Education;
 
 @Service
-public class SchoolManager implements SchoolService {
-	
-	private SchoolDao schoolDao;
+public class EducationManager implements EducationService {
+
+	private EducationDao educationDao;
+	private CvDao cvDao;
 
 	@Autowired
-	public SchoolManager(SchoolDao schoolDao) {
+	public EducationManager(EducationDao educationDao,CvDao cvDao) {
 		super();
-		this.schoolDao = schoolDao;
+		this.educationDao = educationDao;
+		this.cvDao = cvDao;
 	}
 
 	@Override
-	public Result add(School school) {
-		this.schoolDao.save(school);
+	public Result add(int cvId,Education education) {
+		Cv cv = this.cvDao.getOne(cvId);
+		Education edu = new Education(education.getId(), cv, education.getName(), education.getDepartment(), education.getStartDate(),education.getEndDate());
+		this.educationDao.save(edu);
 		return new SuccessResult("Okul Başarıyla Eklendi");
 
 	}
 
 	@Override
-	public DataResult<List<School>> findAllOrderByAsc() {
-		return new SuccessDataResult<List<School>>(this.schoolDao.findAllOrderByAsc());
+	public Result delete(int id) {
+		Education deleteSchool = this.educationDao.getById(id);
+		this.educationDao.delete(deleteSchool);
+		return new SuccessResult("Okul Başarıyla Silindi");
 	}
 
 	@Override
-	public DataResult<List<CvSchool>> findByCvIdOrderByAsc(int id) {
-		return new SuccessDataResult<List<CvSchool>>(this.schoolDao.findByCvIdOrderByAsc(id));
+	public Result update(int cvId,Education education) {
+		Cv cv = this.cvDao.getOne(cvId);
+		Education edu = new Education(education.getId(), cv, education.getName(), education.getDepartment(), education.getStartDate(), education.getEndDate());
+		this.educationDao.save(edu);
+		return new SuccessResult("Okul Başarıyla Güncellendi");
 	}
 
 	@Override
-	public DataResult<List<SchoolDto>> findByCv_id(int id) {
-		return new SuccessDataResult<List<SchoolDto>>(this.schoolDao.findByCv_id(id));
+	public DataResult<List<Education>> findAllOrderByAsc() {
+		return new SuccessDataResult<List<Education>>(this.educationDao.findAllOrderByAsc());
 	}
 
-
+	@Override
+	public DataResult<List<Education>> findByCv_id(int id) {
+		return new SuccessDataResult<List<Education>>(this.educationDao.findByCv_id(id));
+	}
 
 }

@@ -41,5 +41,19 @@ public class JobPositionManager implements JobPositionService {
 			return new SuccessResult("İş pozisyonu eklendi");
 		}
 	}
+	
+	@Override
+	public Result update(JobPosition jobPosition) {
+		this.jobPositionDao.save(jobPosition);
+		return new SuccessResult("İş pozisyonu başarıyla güncellendi");
+	}
+
+	@Override
+	public Result delete(int jobPositionId) {
+		JobPosition deleteJobPosition=this.jobPositionDao.findById(jobPositionId);
+		this.jobPositionDao.delete(deleteJobPosition);
+		return new SuccessResult("İş pozisyonu başarıyla silindi");
+
+	}
 
 }

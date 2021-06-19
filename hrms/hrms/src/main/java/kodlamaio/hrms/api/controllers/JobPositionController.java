@@ -10,9 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.JobPositionService;
 import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
 import kodlamaio.hrms.entities.concretes.JobPosition;
+import kodlamaio.hrms.entities.concretes.cvConcretes.Experience;
 
 @RestController
 @RequestMapping("/api/job-positions")
@@ -43,6 +46,17 @@ public class JobPositionController {
 	@PostMapping("/add")
 	public ResponseEntity<?> add(@Valid @RequestBody JobPosition jobPosition) {
 		return ResponseEntity.ok(this.jobPositionService.add(jobPosition));
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<?> update(@Valid @RequestBody JobPosition jobPosition) {
+		return ResponseEntity.ok(this.jobPositionService.update(jobPosition));
+	}
+	
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<?> delete(@Valid @RequestBody int id) {
+		return ResponseEntity.ok(this.jobPositionService.delete(id));
 	}
 	
 	@ExceptionHandler(MethodArgumentNotValidException.class)

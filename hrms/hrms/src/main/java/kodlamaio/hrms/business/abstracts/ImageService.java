@@ -9,10 +9,15 @@ import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Image;
 
 public interface ImageService {
-	Result add(Image image,MultipartFile imageFile);
-	Result update(Image image);
-	Result delete(Image	image);
-	DataResult<Image> getById(int id);	
+	Result add(int cvId, String imageFile);
+
+	Result update(int cvId, String imageFile);
+
+	Result delete(int imageId);
+
+	DataResult<Image> getById(int id);
+
 	DataResult<List<Image>> getAll();
+
 	DataResult<Image> getByCvId(int id);
 }

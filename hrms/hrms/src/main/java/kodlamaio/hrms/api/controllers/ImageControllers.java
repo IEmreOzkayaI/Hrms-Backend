@@ -10,9 +10,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,19 +39,19 @@ public class ImageControllers {
 	}
 
 	@PostMapping(value = "/add")
-	public ResponseEntity<?> add(@Valid @RequestBody Image image, @RequestParam(value = "imageFile") MultipartFile imageFile) {
-		return ResponseEntity.ok(this.imageService.add(image, imageFile));
+	public ResponseEntity<?> add(@Valid @RequestParam int cvId,@RequestParam String imageFile) {
+		return ResponseEntity.ok(this.imageService.add(cvId, imageFile));
 	}
 
-	@PostMapping("/update")
-	public ResponseEntity<?> update(@Valid @RequestParam Image image) {
-		return ResponseEntity.ok(this.imageService.update(image));
+	@PutMapping("/update")
+	public ResponseEntity<?> update(@Valid @RequestParam int cvId,@RequestParam String imageFile) {
+		return ResponseEntity.ok(this.imageService.update(cvId, imageFile));
 
 	}
 
-	@PostMapping("/delete")
-	public ResponseEntity<?> delete(@RequestBody Image image) {
-		return ResponseEntity.ok(this.imageService.delete(image));
+	@DeleteMapping("/delete")
+	public ResponseEntity<?> delete(@RequestParam int imageId) {
+		return ResponseEntity.ok(this.imageService.delete(imageId));
 
 	}
 
@@ -57,7 +60,7 @@ public class ImageControllers {
 		return ResponseEntity.ok(this.imageService.getAll());
 	}
 
-	@GetMapping("/getAllByCandidateId")
+	@GetMapping("/getAllByCvId")
 	public ResponseEntity<?> getByCvId(@RequestParam int id) {
 		return ResponseEntity.ok(this.imageService.getByCvId(id));
 	}
@@ -66,15 +69,15 @@ public class ImageControllers {
 	public ResponseEntity<?> getById(@RequestParam int id) {
 		return ResponseEntity.ok(this.imageService.getById(id));
 	}
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
+	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions) {
 		Map<String, String> validationErrors = new HashMap<String, String>();
-		for(FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
+		for (FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors,"Doğrulama Hataları");
+		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Doğrulama Hataları");
 		return errors;
 	}
 }

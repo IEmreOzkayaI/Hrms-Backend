@@ -22,18 +22,35 @@ public class SystemPersonnelManager implements SystemPersonnelService {
 		super();
 		this.systemPersonnelDao = systemPersonnelDao;
 	}
-	
+
 	@Override
 	public Result add(SystemPersonnel systemPersonnel) {
 		this.systemPersonnelDao.save(systemPersonnel);
 		return new SuccessResult("Personel Başarıyla Eklendi.");
 	}
 
-
 	@Override
 	public DataResult<List<SystemPersonnel>> getAll() {
 		return new SuccessDataResult<List<SystemPersonnel>>(this.systemPersonnelDao.findAll(), "Listeleme Başarılı");
 	}
 
+	@Override
+	public DataResult<SystemPersonnel> getById(int id) {
+		return new SuccessDataResult<SystemPersonnel>(this.systemPersonnelDao.getById(id),
+				"Sistem Personeli Id ile alındı");
+	}
+
+	@Override
+	public Result update(SystemPersonnel systemPersonnel) {
+		this.systemPersonnelDao.save(systemPersonnel);
+		return new SuccessResult("Personel Başarıyla Güncellendi");
+	}
+
+	@Override
+	public Result delete(int id) {
+		SystemPersonnel deletePersonel = this.systemPersonnelDao.getById(id);
+		this.systemPersonnelDao.delete(deletePersonel);
+		return new SuccessResult("Personel Başarıyla Silindi");
+	}
 
 }

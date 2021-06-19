@@ -10,9 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,23 +37,38 @@ public class CvControllers {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@Valid @RequestBody Cv cv) {
-		return ResponseEntity.ok(this.cvService.add(cv));
+	public ResponseEntity<?> add(@Valid @RequestParam String github, String linkedin, String biography, int userId) {
+		return ResponseEntity.ok(this.cvService.add(github, linkedin, biography, userId));
 	}
 
+	@DeleteMapping("/delete")
+	public ResponseEntity<?> delete(@RequestParam int id) {
+		return ResponseEntity.ok(this.cvService.delete(id));
+	}
+
+	@PutMapping("/update")
+	public ResponseEntity<?> update(@RequestParam String github, String linkedin, String biography, int userId) {
+		return ResponseEntity.ok(this.cvService.update(github, linkedin, biography, userId));
+	}
+
+	@GetMapping("/getAll")
+	public ResponseEntity<?> getAll( ) {
+		return ResponseEntity.ok(this.cvService.getAll());
+	}
+	
 	@GetMapping("/getById")
 	public ResponseEntity<?> getById(@RequestParam int id) {
 		return ResponseEntity.ok(this.cvService.getById(id));
 	}
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions){
+	public ErrorDataResult<Object> handleValidationException(MethodArgumentNotValidException exceptions) {
 		Map<String, String> validationErrors = new HashMap<String, String>();
-		for(FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
+		for (FieldError fieldError : exceptions.getBindingResult().getFieldErrors()) {
 			validationErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
 		}
-		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors,"Doğrulama Hataları");
+		ErrorDataResult<Object> errors = new ErrorDataResult<Object>(validationErrors, "Doğrulama Hataları");
 		return errors;
 	}
 

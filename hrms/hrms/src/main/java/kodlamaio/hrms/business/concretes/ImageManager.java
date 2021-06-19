@@ -1,5 +1,6 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -35,28 +36,47 @@ public class ImageManager implements ImageService {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public Result add(Image image, MultipartFile imageFile) {
-		Map<String, String> uploadImage = this.imageUploadService.uploadImageFile(imageFile).getData();
-		for (Cv c : cvDao.findAll()) {
-			if (c.getId() == image.getCv().getId()) {
-				image.setImageUrl(uploadImage.get("url"));
-				this.imageDao.save(image);
-				return new SuccessResult("Fotoğraf eklendi!");
-			}
-		}
-		return new ErrorResult("Böyle bir cv mevcut değil fotoğraf eklenemedi!");
-
-	}
-
-	@Override
-	public Result update(Image image) {
+	@Override	
+	public Result add(int cvId, String imageFile) {
+		Cv cv = this.cvDao.getById(cvId);
+		File file = new File(imageFile);
+		String link = imageUploadService.uploadImageFile(file);
+		
+		Image image = new Image(0, link, cv);
+		
+		cv.setImage(image);
+		
 		this.imageDao.save(image);
-		return new SuccessResult("Fotoğraf güncellendi!");
+		this.cvDao.save(cv);
+		return new SuccessResult("Resim Başarıyla Eklendi");
+
 	}
 
 	@Override
-	public Result delete(Image image) {
+	public Result update(int cvId, String imageFile) {
+		Cv cv = this.cvDao.getById(cvId);
+		Image toDelete = this.imageDao.findByCv_id(cvId);
+		this.imageDao.delete(toDelete);
+		
+		File file = new File(imageFile);
+		
+		String link = imageUploadService.uploadImageFile(file);
+		
+		Image image = new Image(0, link, cv);
+		
+		
+		this.imageDao.save(image);
+
+		cv.setImage(image);
+
+		this.cvDao.save(cv);
+		return new SuccessResult("Resim Başarıyla Eklendi");
+
+	}
+
+	@Override
+	public Result delete(int  imageId) {
+		Image image = this.imageDao.findById(imageId);
 		this.imageDao.delete(image);
 		return new SuccessResult("Fotoğraf silindi!");
 	}

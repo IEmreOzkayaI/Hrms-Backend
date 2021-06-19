@@ -11,9 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
+import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
@@ -40,6 +43,17 @@ public class JobAdvertisementController {
 	public ResponseEntity<?> add(@Valid @RequestBody JobAdvertisement jobAdvertisement) {
 		return ResponseEntity.ok(this.jobAdvertisementService.add(jobAdvertisement));
 	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<?> update(@Valid @RequestBody JobAdvertisement jobAdvertisement) {
+		return ResponseEntity.ok(this.jobAdvertisementService.update(jobAdvertisement));
+	}
+	
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<?> delete(@Valid @RequestBody int id) {
+		return ResponseEntity.ok(this.jobAdvertisementService.delete(id));
+	}
 
 	@GetMapping("/getJobAdvertisementIsActiveTrue")
 	public ResponseEntity<?> findJobAdvertisementIsActiveTrue() {
@@ -56,7 +70,7 @@ public class JobAdvertisementController {
 		return ResponseEntity.ok(this.jobAdvertisementService.findJobAdvertisementIsActiveTrueAndEmployer_UserId(id));
 	}
 
-	@GetMapping("/closeJobAdvertisement")
+	@PutMapping("/closeJobAdvertisement")
 	public ResponseEntity<?> closeJobAdvertisement(@RequestParam int id) {
 		return ResponseEntity.ok(this.jobAdvertisementService.closeJobAdvertisement(id));
 	}

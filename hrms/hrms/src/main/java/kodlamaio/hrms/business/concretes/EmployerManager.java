@@ -1,5 +1,6 @@
 package kodlamaio.hrms.business.concretes;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -32,7 +33,6 @@ public class EmployerManager implements EmployerService {
 	
 	@Override
 	public Result add(Employer employer) {
-		
 		if(!EmployerCheckHelper.allFieldsAreRequired(employer)) {
 			return new ErrorResult("Tüm alanları doldurunuz");
 			
@@ -55,10 +55,25 @@ public class EmployerManager implements EmployerService {
 		}
 	}
 	
+	@Override
+	public Result update(Employer employer) {
+		this.employerDao.save(employer);
+		return new SuccessResult("İş veren başarıyla güncellendi");
+	}
+
+	@Override
+	public Result delete(int id) {
+		Employer deleteEmployer = this.employerDao.findById(id);
+		this.employerDao.delete(deleteEmployer);
+		return new SuccessResult("İş veren başarıyla silindi");
+	}
+	
 	private boolean isEmailFormatValid(Employer employer) {
 		String EMAIL_PATTERN = "^[A-Z0-9._%+-]+@"+employer.getWebSite();
 		java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(EMAIL_PATTERN,
 		java.util.regex.Pattern.CASE_INSENSITIVE);
 		return pattern.matcher(employer.getEmail()).find();	
 	}
+
+
 }
