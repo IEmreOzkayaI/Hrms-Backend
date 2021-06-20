@@ -9,8 +9,8 @@ import kodlamaio.hrms.entities.dtos.JobAdvertisementDto;
 
 public interface JobAdvertisementService {
 
-	Result add(JobAdvertisement jobAdvertisement);
-	Result update(JobAdvertisement jobAdvertisement);
+	Result add(int employerId ,int jobPositionId,int cityId,JobAdvertisement jobAdvertisement);
+	Result update(int employerId ,int jobPositionId,int cityId,JobAdvertisement jobAdvertisement);
 	Result delete(int jobAdvertisementId);
 
 	Result closeJobAdvertisement(int id);

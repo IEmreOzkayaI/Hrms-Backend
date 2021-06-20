@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -37,8 +36,8 @@ public class JobAdvertisement {
 	private Employer employer;
 
 	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name = "id")
+	@ManyToOne
+	@JoinColumn(name = "job_position_id")
 	private JobPosition jobPositionId;
 
 	@Column(name="job_description")
@@ -58,7 +57,6 @@ public class JobAdvertisement {
 	private int maxSalary;
 
 	@Column(name = "open_positions")
-	@NotBlank
 	@NotNull
 	private int openPositions;
 

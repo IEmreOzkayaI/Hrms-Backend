@@ -39,18 +39,18 @@ public class JobAdvertisementController {
 	}
 
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@Valid @RequestBody JobAdvertisement jobAdvertisement) {
-		return ResponseEntity.ok(this.jobAdvertisementService.add(jobAdvertisement));
+	public ResponseEntity<?> add(@Valid @RequestParam int employerId , @RequestParam int jobPositionId ,@RequestParam int cityId, @RequestBody JobAdvertisement jobAdvertisement) {
+		return ResponseEntity.ok(this.jobAdvertisementService.add(employerId,jobPositionId,cityId,jobAdvertisement));
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<?> update(@Valid @RequestBody JobAdvertisement jobAdvertisement) {
-		return ResponseEntity.ok(this.jobAdvertisementService.update(jobAdvertisement));
+	public ResponseEntity<?> update(@Valid @RequestParam int employerId , @RequestParam int jobPositionId ,@RequestParam int cityId, @RequestBody JobAdvertisement jobAdvertisement) {
+		return ResponseEntity.ok(this.jobAdvertisementService.update(employerId,jobPositionId,cityId,jobAdvertisement));
 	}
 	
 	
 	@DeleteMapping("/delete")
-	public ResponseEntity<?> delete(@Valid @RequestBody int id) {
+	public ResponseEntity<?> delete(@Valid  @RequestParam int id) {
 		return ResponseEntity.ok(this.jobAdvertisementService.delete(id));
 	}
 

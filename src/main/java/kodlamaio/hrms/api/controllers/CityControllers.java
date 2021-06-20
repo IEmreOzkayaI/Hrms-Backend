@@ -1,6 +1,7 @@
 package kodlamaio.hrms.api.controllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import kodlamaio.hrms.entities.concretes.City;
 
 @RestController
 @RequestMapping("/api/city")
+@CrossOrigin
 public class CityControllers {
 
 	private CityService cityService;
