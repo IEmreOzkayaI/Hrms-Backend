@@ -1,4 +1,4 @@
-![Image of HRMS](https://blush.design/api/download?shareUri=UNOXbJ-ybMZ6Mri8&c=Hair_0%7E9b5120-0.1.0%7E0f0f0f-0.1.1%7Ec38741-0.1.2%7Ec38741_Skin_0%7E7d4439-0.1.0%7Ef6cbc3-0.1.1%7Ec26e5e-0.1.2%7E7d4439&w=800&h=800&fm=png)
+![Image of HRMS](https://s3-us-west-1.amazonaws.com/files.delesign/wp-content/uploads/2018/06/Illustration-1.png)
 
 <h1>❗HRMS</h1>
 <a href="#katman">- Katmanlar</a></br> 
