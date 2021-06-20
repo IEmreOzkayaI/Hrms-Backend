@@ -26,7 +26,7 @@ public class CityControllers {
 		this.cityService = cityService;
 	}
 
-	@PostMapping("/add")
+	@PostMapping(value = "/add")
 	public ResponseEntity<?> add(@RequestBody City city) {
 		return ResponseEntity.ok(this.cityService.add(city));
 	}
