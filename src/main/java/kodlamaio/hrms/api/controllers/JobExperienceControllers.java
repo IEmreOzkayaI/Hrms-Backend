@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.ExperienceService;
 import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
-import kodlamaio.hrms.entities.concretes.JobAdvertisement;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Experience;
 
 @RestController

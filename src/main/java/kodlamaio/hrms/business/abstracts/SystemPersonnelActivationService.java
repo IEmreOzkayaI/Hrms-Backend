@@ -4,8 +4,7 @@ import java.util.List;
 
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.entities.concretes.Employer;
-import kodlamaio.hrms.entities.concretes.SystemPersonnel;
+
 import kodlamaio.hrms.entities.concretes.SystemPersonnelActivation;
 
 public interface SystemPersonnelActivationService {

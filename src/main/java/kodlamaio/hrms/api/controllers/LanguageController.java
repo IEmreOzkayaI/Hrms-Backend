@@ -1,7 +1,6 @@
 package kodlamaio.hrms.api.controllers;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -23,11 +22,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.LanguageService;
-import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
-import kodlamaio.hrms.entities.concretes.JobSeeker;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Language;
-import kodlamaio.hrms.entities.dtos.LanguageDto;
 
 @RestController
 @RequestMapping("/api/language")

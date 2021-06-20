@@ -2,17 +2,14 @@ package kodlamaio.hrms.business.concretes;
 
 import java.io.File;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import kodlamaio.hrms.business.abstracts.ImageService;
 import kodlamaio.hrms.business.abstracts.ImageUploadService;
 import kodlamaio.hrms.core.utilities.dataResults.DataResult;
 import kodlamaio.hrms.core.utilities.dataResults.SuccessDataResult;
-import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.CvDao;
@@ -35,7 +32,6 @@ public class ImageManager implements ImageService {
 		this.cvDao = cvDao;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override	
 	public Result add(int cvId, String imageFile) {
 		Cv cv = this.cvDao.getById(cvId);

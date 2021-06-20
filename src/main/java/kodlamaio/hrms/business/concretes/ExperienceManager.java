@@ -14,7 +14,6 @@ import kodlamaio.hrms.dataAccess.abstracts.CvDao;
 import kodlamaio.hrms.dataAccess.abstracts.ExperienceDao;
 import kodlamaio.hrms.entities.concretes.Cv;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Experience;
-import kodlamaio.hrms.entities.dtos.ExperienceDto;
 
 @Service
 public class ExperienceManager implements ExperienceService {

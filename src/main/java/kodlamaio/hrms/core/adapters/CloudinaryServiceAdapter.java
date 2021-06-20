@@ -5,15 +5,12 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
 import kodlamaio.hrms.business.abstracts.ImageUploadService;
-import kodlamaio.hrms.core.utilities.dataResults.DataResult;
-import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
-import kodlamaio.hrms.core.utilities.dataResults.SuccessDataResult;
+
 @Service
 public class CloudinaryServiceAdapter implements ImageUploadService {
 

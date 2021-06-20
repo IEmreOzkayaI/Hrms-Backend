@@ -1,6 +1,5 @@
 package kodlamaio.hrms.entities.dtos;
 
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

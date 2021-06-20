@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.JobPositionService;
 import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
 import kodlamaio.hrms.entities.concretes.JobPosition;
-import kodlamaio.hrms.entities.concretes.cvConcretes.Experience;
 
 @RestController
 @RequestMapping("/api/job-positions")

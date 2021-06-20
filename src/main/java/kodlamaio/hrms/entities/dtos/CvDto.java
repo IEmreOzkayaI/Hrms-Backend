@@ -6,7 +6,6 @@ import java.util.List;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Education;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Experience;
 import kodlamaio.hrms.entities.concretes.cvConcretes.Language;
-import kodlamaio.hrms.entities.concretes.cvConcretes.ProgrammingLanguage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

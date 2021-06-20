@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.JobSeekerService;
 import kodlamaio.hrms.core.utilities.dataResults.ErrorDataResult;
-import kodlamaio.hrms.entities.concretes.JobPosition;
 import kodlamaio.hrms.entities.concretes.JobSeeker;
 
 @RestController

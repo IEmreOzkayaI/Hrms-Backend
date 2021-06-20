@@ -1,7 +1,5 @@
 package kodlamaio.hrms.business.concretes;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.CvService;
 import kodlamaio.hrms.business.abstracts.ExperienceService;
-import kodlamaio.hrms.business.abstracts.ImageService;
-import kodlamaio.hrms.business.abstracts.JobSeekerService;
+
 import kodlamaio.hrms.business.abstracts.LanguageService;
 import kodlamaio.hrms.business.abstracts.ProgrammingLanguageService;
 import kodlamaio.hrms.business.abstracts.EducationService;
@@ -32,15 +29,12 @@ public class CvManager implements CvService {
 	private EducationService schoolService;
 	private LanguageService languageService;
 	private ProgrammingLanguageService programmingLanguageService;
-	private JobSeekerDao jobSeekerDao ;
-	private JobSeekerService jobSeekerService ;
-	private ImageService imageService;
-
+	private JobSeekerDao jobSeekerDao;
 
 	@Autowired
 	public CvManager(CvDao cvDao, ExperienceService experienceService, EducationService schoolService,
-			LanguageService languageService, ProgrammingLanguageService programmingLanguageService,JobSeekerDao jobSeekerDao,JobSeekerService jobSeekerService
-			,ImageService imageService) {
+			LanguageService languageService, ProgrammingLanguageService programmingLanguageService,
+			JobSeekerDao jobSeekerDao) {
 		super();
 		this.cvDao = cvDao;
 		this.experienceService = experienceService;
@@ -48,13 +42,11 @@ public class CvManager implements CvService {
 		this.languageService = languageService;
 		this.programmingLanguageService = programmingLanguageService;
 		this.jobSeekerDao = jobSeekerDao;
-		this.jobSeekerService = jobSeekerService;
-		this.imageService=imageService;
 	}
-	
+
 	@Override
 	public DataResult<List<Cv>> getAll() {
-		return new SuccessDataResult<List<Cv>>(this.cvDao.findAll(),"Cvler listelendi");
+		return new SuccessDataResult<List<Cv>>(this.cvDao.findAll(), "Cvler listelendi");
 	}
 
 	@Override
@@ -69,15 +61,15 @@ public class CvManager implements CvService {
 	}
 
 	@Override
-	public Result add(String github,String linkedin,String biography,int userId) {
+	public Result add(String github, String linkedin, String biography, int userId) {
 		JobSeeker jobSeeker = this.jobSeekerDao.findById(userId);
 
-        Cv cv = new Cv();
-        cv.setJobSeeker(jobSeeker);
-        cv.setBiography(biography);
-        cv.setGithub(github);
-        cv.setLinkedin(linkedin);
-        
+		Cv cv = new Cv();
+		cv.setJobSeeker(jobSeeker);
+		cv.setBiography(biography);
+		cv.setGithub(github);
+		cv.setLinkedin(linkedin);
+
 		this.cvDao.save(cv);
 		return new SuccessResult("Ekleme Başarılı");
 	}
@@ -90,15 +82,15 @@ public class CvManager implements CvService {
 	}
 
 	@Override
-	public Result update(String github,String linkedin,String biography,int userId) {
+	public Result update(String github, String linkedin, String biography, int userId) {
 		JobSeeker jobSeeker = this.jobSeekerDao.findById(userId);
 
-        Cv cv = new Cv();
-        cv.setJobSeeker(jobSeeker);
-        cv.setBiography(biography);
-        cv.setGithub(github);
-        cv.setLinkedin(linkedin);
-		
+		Cv cv = new Cv();
+		cv.setJobSeeker(jobSeeker);
+		cv.setBiography(biography);
+		cv.setGithub(github);
+		cv.setLinkedin(linkedin);
+
 		this.cvDao.save(cv);
 		return new SuccessResult("Cv Başarıyla Güncellendi");
 	}
